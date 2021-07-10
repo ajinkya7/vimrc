@@ -1,5 +1,5 @@
 " ================================
-" Welcome to Naz's vimrc file
+" Welcome to Ajinkya's vimrc file
 " ================================
 
 " --------------------------------
@@ -30,16 +30,29 @@ Plugin 'kana/vim-textobj-line'
 Plugin 'kana/vim-textobj-entire'
 Plugin 'szw/vim-g'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'fatih/vim-go' " golang development 
 Plugin 'jamesroutley/vim-logbook'
 Plugin 'sheerun/vim-polyglot'   " syntax highlighting in most languages
 Plugin 'joshdick/onedark.vim'   " Atom-style dark theme
-
+Plugin 'mattn/emmet-vim'        " Webd emmets
+Plugin 'prettier/vim-prettier'
+" Plugin 'neoclide/coc.nvim'
+" Plugin 'preservim/nerdtree'
 
 Plugin 'valloric/youcompleteme'
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 
 " --------------------------------
 " Pretty things
@@ -49,6 +62,7 @@ colorscheme onedark
 
 " Set Airline bar theme
 let g:airline_theme='bubblegum'
+let g:airline_powerline_fonts = 1
 
 "rainbow Plugin Options (luochen1990/rainbow)
 let g:rainbow_active = 1    " 0 if you want to enable it later via :RainbowToggle
@@ -67,6 +81,7 @@ set relativenumber  " Relative line numbers
 set hlsearch        " Highlight whole word when searching
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...except when serach query contains a capital letter
+set incsearch       " Show search results as you type
 set autoread        " Auto load files if they change on disc
 map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
 map <Leader>y "*y  )
@@ -146,4 +161,11 @@ map <F8> :!g++ -g  % && ./a.out <CR>
 map <F9> :!g++ -g  % && ./a.out < input.txt <CR>
 map <F5> :!g++ -g % <CR>
 map <F12> :!gdb ./a.out <CR>
+
+"emmet leader key
+let g:user_emmet_leader_key=','
+
+"Pretter format on save
+let g:prettier#quickfix_enabled = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
